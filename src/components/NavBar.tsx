@@ -2,10 +2,7 @@ import {useState} from "react";  //hook - 7.zahtev
 import "../App.css"
 import {Link} from "react-router-dom";
 
-interface NavBarProps{     //interfajs - 9.zahtev
-    imageSrcPath: string;
-    navItems: {name: string, path: string }[]; //ime stranice i putanja
-}
+import { NavBarProps } from "../models/NavBarProps";
 
 export default function NavBar({imageSrcPath, navItems}: NavBarProps) {  //NavBar - 3.zahtev
   

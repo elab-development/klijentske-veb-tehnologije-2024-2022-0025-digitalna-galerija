@@ -9,18 +9,26 @@ import Login from "./components/Login";
 import Gallery from "./components/Gallery";
 import AboutUs from "./components/AboutUs";
 
+import { NavBarProps } from "./models/NavBarProps";
+
+
+
 const navItems = [
   {name: "Home", path: '/components/Home'},
   {name: "Login", path: '/components/Login'},
   {name: "Gallery", path: '/components/Gallery'},
   {name: "AboutUs", path: '/components/AboutUs'},
 ]
+const  navBarProps = new NavBarProps(imagePath, navItems);  //instanca klase NavBarProps
+
 
 const App: React.FC = () => {
+  
 
   return (
     <Router>
-      <NavBar imageSrcPath={imagePath} navItems={navItems}/>
+      <NavBar {...navBarProps}/>
+       
       <Routes>
         <Route path = "/components/Home" element = {<Home />} /> 
         <Route path = "/components/Login" element = {<Login />} /> 
