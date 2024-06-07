@@ -1,9 +1,10 @@
 import {useState} from "react";  //hook - 7.zahtev
 import "../App.css"
+import {Link} from "react-router-dom";
 
 interface NavBarProps{     //interfajs - 9.zahtev
     imageSrcPath: string;
-    navItems: string[];
+    navItems: {name: string, path: string }[]; //ime stranice i putanja
 }
 
 export default function NavBar({imageSrcPath, navItems}: NavBarProps) {  //NavBar - 3.zahtev
@@ -44,19 +45,19 @@ const[selectedIndex, setSelectedIndex] = useState(-1);
                         
                         {navItems.map((items, index)=>
                         (
-                            <li key = {items}
+                            <li key = {items.path}
             
                             className="nav-item"
                             onClick={()=>setSelectedIndex(index)}>
-                                <a 
+                                <Link 
                                     className={
                                         selectedIndex == index 
                                             ? "nav-link active fw-bold"
                                             : "nav-link"
                                         }
-                                    href="#">
-                                {items}
-                                </a>
+                                    to={items.path}>
+                                {items.name}
+                                </Link>
                             </li>
                         ))}
                         
