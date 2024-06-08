@@ -1,33 +1,15 @@
 import React from 'react';
-
-
-interface Image {
-    id: number;
-    src: string;
-    alt: string;
-}
-
-const images: Image[] = [
-    { id: 1, src: '../assets/pixel.png', alt: 'Image 1' },
-    { id: 2, src: 'image2.jpg', alt: 'Image 2' },
-    { id: 3, src: 'image3.jpg', alt: 'Image 3' },
-    { id: 4, src: 'image4.jpg', alt: 'Image 4' }
-];
-
-const mainImage: Image = images[0]; // Prva slika kao glavna slika
+import homeImage from '../images/home.png'; // Uvoz slike
+import './Home.css';
 
 const Home: React.FC = () => {
     return (
-        <div>
-            <h1>Home Page</h1>
-            <div className="main-image">
-                <img src={mainImage.src} alt={mainImage.alt} />
+        <div className="home-container">
+            <div className="text-container">
+                <p className="prvi">Pixel Museum</p>
+                <p>Experience gallery sighting from the comfort of your home!</p>
             </div>
-            <div className="secondary-images">
-                {images.map((image, index) => (
-                    <img key={index} src={image.src} alt={image.alt} />
-                ))}
-            </div>
+            <img src={homeImage} alt="Home" className="home-image" /> {/* Dodavanje slike */}
         </div>
     );
 };

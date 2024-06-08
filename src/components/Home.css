@@ -1,0 +1,36 @@
+.home-container {
+    display: flex;
+    align-items: center; /* Centriranje po vertikali */
+    margin-left: 10%;
+  }
+  
+  .text-container {
+    flex: 1;
+  }
+  
+  .prvi {
+    font-size: 48px;
+    font: Teko;
+    font-weight: bold;
+    color: #680f50;
+    margin-bottom: 10px; /* Smanjenje razmaka između naslova i prvog paragrafa */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 10px; /* Smanjenje razmaka između paragrafa */
+    text-align: left;
+  }
+  
+  .home-image {
+    max-width: 40%;
+    height: auto;
+    border-radius: 12px;
+    margin-left: 10px; /* Pomjeranje slike ulevo */
+    margin-right: 20%; /* Postavljanje margine s desne strane na 5% */
+    margin-top: 40px; /* Pomeranje slike malo više prema sredini */
+    margin-bottom: 20px; /* Pomeranje slike malo niže */
+  }
+  
