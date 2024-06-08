@@ -1,6 +1,35 @@
 /* gallery.css */
 
 .image-grid {
+    text-align: center; /* Postavljamo tekstualni sadržaj na sredinu */
+    display: flex; /* Koristimo fleksibilni kontejner */
+    align-items: center; /* Postavljamo elemente u sredinu horizontalno */
+    justify-content: center; /* Postavljamo elemente u sredinu vertikalno */
+}
+
+/* Dodajemo stilizaciju za button element */
+.image-grid button {
+    background-color: rgb(28, 28, 151);
+    color: white; /* Beli tekst */
+    border: none;
+    padding: 10px 20px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Dodajemo glatki prelaz između boja */
+    align-items: center;
+}
+
+/* Dodajemo hover efekat za dugme */
+.image-grid button:hover {
+    background-color: #e92eae; /* Tamnija nijansa zelene boje prilikom hover-a */
+}
+
+.image-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

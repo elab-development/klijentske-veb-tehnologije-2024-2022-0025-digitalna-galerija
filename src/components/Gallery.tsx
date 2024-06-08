@@ -3,6 +3,7 @@ import './Gallery.css';
 
 const Gallery: React.FC = () => {
     const [images, setImages] = useState([]);
+    const [likedImages, setLikedImages] = useState<number[]>([]);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -25,6 +26,14 @@ const Gallery: React.FC = () => {
         fetchImages();
     }, []);
 
+    const handleLikeClick = (id: number) => {
+        if (likedImages.includes(id)) {
+            setLikedImages(likedImages.filter(imageId => imageId !== id));
+        } else {
+            setLikedImages([...likedImages, id]);
+        }
+    };
+
     return (
         <div>
             <h1>Gallery</h1>
@@ -33,6 +42,9 @@ const Gallery: React.FC = () => {
                     <div key={index}>
                         <img src={image.src.medium} alt={image.photographer} />
                         <p>{image.photographer}</p>
+                        <button onClick={() => handleLikeClick(image.id)}>
+                            {likedImages.includes(image.id) ? 'Unlike' : 'Like'}
+                        </button>
                     </div>
                 ))}
             </div>
