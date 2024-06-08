@@ -4,6 +4,8 @@ import johnDoeImg from '../images/slika4.png';
 import janeSmithImg from '../images/slika2.png';
 import alexJohnsonImg from '../images/slika3.png';
 
+
+
 // Definiraj interfejs za podatke o timu
 interface TeamMember {
   name: string;
@@ -56,7 +58,14 @@ const AboutUs: React.FC = () => {
     }
   };
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
+    <div className={darkMode ? 'dark-mode' : 'light-mode'}>
     <div>
       
       <div className="filters">
@@ -68,6 +77,10 @@ const AboutUs: React.FC = () => {
 
       {/* Prikaz članova tima */}
       <div className="team">{displayTeamMembers()}</div>
+    </div>
+        <div className="dark">
+            <button onClick={toggleDarkMode}>Promeni u Dark Mode</button>
+        </div>
     </div>
   );
 };
