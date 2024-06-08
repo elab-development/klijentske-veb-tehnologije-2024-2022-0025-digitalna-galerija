@@ -23,7 +23,7 @@ const Login: React.FC = () => {
 
     return (
         <div className="container"> {/* Dodavanje CSS klase na div */}
-            <h1>Login Page</h1>
+            <h1>Login</h1>
             <div className="form-group">
                 <label htmlFor="username">Korisničko ime:</label>
                 <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />

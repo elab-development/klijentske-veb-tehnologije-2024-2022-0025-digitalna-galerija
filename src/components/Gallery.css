@@ -1,0 +1,25 @@
+/* gallery.css */
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-grid img {
+    margin: 10px;
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 20px;
+    text-align: center;
+}

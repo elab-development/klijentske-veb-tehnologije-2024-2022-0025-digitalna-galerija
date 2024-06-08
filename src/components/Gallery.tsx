@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './Gallery.css';
 
 const Gallery: React.FC = () => {
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const response = await fetch('https://api.pexels.com/v1/search?query=artpiece&per_page=8', {
+                    headers: {
+                        Authorization: 'f8eLZrQGnyHWu6wQ1DS8CG6IUX9QG6DTm3tgfXjFAnHKmt9U8xkKuZYB'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to fetch images');
+                }
+                const data = await response.json();
+                setImages(data.photos);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchImages();
+    }, []);
+
     return (
         <div>
-            <h1>Gallery Page</h1>
-            <p>Welcome to the Gallery page.</p>
+            <h1>Gallery</h1>
+            <div className="image-grid">
+                {images.map((image: any, index: number) => (
+                    <div key={index}>
+                        <img src={image.src.medium} alt={image.photographer} />
+                        <p>{image.photographer}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
