@@ -14,7 +14,7 @@ import { NavBarProps } from "./models/NavBarProps";
 
 
 const navItems = [
-  {name: "Home", path: '/components/Home'},
+  {name: "Home", path: '/'},
   {name: "Login", path: '/components/Login'},
   {name: "Gallery", path: '/components/Gallery'},
   {name: "AboutUs", path: '/components/AboutUs'},
@@ -28,9 +28,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <NavBar {...navBarProps}/>
-       
+      
       <Routes>
-        <Route path = "/components/Home" element = {<Home />} /> 
+        <Route path = "/" element = {<Home />} /> 
         <Route path = "/components/Login" element = {<Login />} /> 
         <Route path = "/components/Gallery" element = {<Gallery />} /> 
         <Route path = "/components/AboutUs" element = {<AboutUs />} />
