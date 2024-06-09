@@ -10,11 +10,11 @@ import alexJohnsonImg from '../images/slika3.png';
 interface TeamMember {
   name: string;
   position: string;
-  department: string;
+  department: string; 
   image: string; // Dodali smo polje za sliku
 }
 
-// Definiraj podatke o timu
+// niz objekata koji definiraj podatke o timu
 const team: TeamMember[] = [
   { name: "John Doe", position: "Software Developer", department: "Engineering", image: johnDoeImg },
   { name: "Jane Smith", position: "Marketing Manager", department: "Marketing", image: janeSmithImg },
@@ -23,14 +23,15 @@ const team: TeamMember[] = [
 ];
 
 const AboutUs: React.FC = () => {
-  const [filteredDepartment, setFilteredDepartment] = useState<string | null>(null);
+  const [filteredDepartment, setFilteredDepartment] = useState<string | null>(null); 
+  //Koristi se useState hook za praćenje trenutno odabranog departmana za filtriranje članova tima.
 
   // Filtriraj članove tima prema odabranom departmanu
   const filterTeamByDepartment = (department: string) => {
     setFilteredDepartment(department);
   };
 
-  // Funkcija za prikaz članova tima
+  // Funkcija za prikaz članova tima - ako nije odabran nijedan departman, prikazuju se svi članovi tima
   const displayTeamMembers = () => {
     if (filteredDepartment) {
       const filteredTeam = team.filter(member => member.department === filteredDepartment);
@@ -58,9 +59,12 @@ const AboutUs: React.FC = () => {
     }
   };
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false); 
+  //koristi se useState hook za praćenje trenutnog moda (svetli ili tamni)
 
-  const toggleDarkMode = () => {
+
+  //funkcija menja vrednost darkMode između true i false, omogućavajući prelazak između svetlog i tamnog moda
+  const toggleDarkMode = () => { 
     setDarkMode(!darkMode);
   };
 
@@ -79,7 +83,8 @@ const AboutUs: React.FC = () => {
       <div className="team">{displayTeamMembers()}</div>
     </div>
         <div className="dark">
-            <button onClick={toggleDarkMode}>Promeni u Dark Mode</button>
+            <button onClick={toggleDarkMode}>Promeni u Dark Mode</button> 
+            {/*Klikom na dugme se poziva toggleDarkMode funkcija koja menja vrednost darkMode stanja.*/}
         </div>
     </div>
   );

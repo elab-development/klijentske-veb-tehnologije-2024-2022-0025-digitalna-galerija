@@ -2,18 +2,18 @@
 
 
 .App{
-  text-align: center;
-  min-height: 100vh;
+  text-align: center; /*Centrira tekst unutar App komponente*/
+  min-height: 100vh; /* Postavljamo minimalnu visinu na 100% visine vidljivog dela prozora*/
   display: flex;
   flex-direction: column;
 }
 
 
 .navbar{
-  background-color: #C09FDE;
+  background-color: #C09FDE; /*menjamo boju NavBara u istu boju kao i u projktu u figmi*/
 }
 
-.navbar-nav .nav-item .nav-link:hover{
-  color: black;
-  background-color: #c14cc9;
+.navbar-nav .nav-item .nav-link:hover{ /*kada se prolazi mišem preko linka*/
+  color: black; /*tekst crne boje*/
+  background-color: #c14cc9; /*pozadinska boja linka*/
 }

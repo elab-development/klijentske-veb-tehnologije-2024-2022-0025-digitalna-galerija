@@ -1,5 +1,6 @@
 /* gallery.css */
 
+/*stilizovanje paginacije da ona  bude na sredini*/
 .pagination {
     display: flex;
     justify-content: center;
@@ -32,7 +33,7 @@
 
 /* Dodajemo hover efekat za dugme */
 .image-grid button:hover {
-    background-color: #e92eae; /* Tamnija nijansa zelene boje prilikom hover-a */
+    background-color: #e92eae; /* pink boja prilikom hover-a */
 }
 
 .image-grid {

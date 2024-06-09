@@ -10,9 +10,9 @@
   
   .prvi {
     font-size: 48px;
-    font: Teko;
+    font: Teko; /* font isti kao i u figma projketu */
     font-weight: bold;
-    color: #680f50;
+    color: #680f50; /* boja naslova */
     margin-bottom: 10px; /* Smanjenje razmaka između naslova i prvog paragrafa */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -29,7 +29,7 @@
     height: auto;
     border-radius: 12px;
     margin-left: 10px; /* Pomjeranje slike ulevo */
-    margin-right: 20%; /* Postavljanje margine s desne strane na 5% */
+    margin-right: 20%; /* Postavljanje margine s desne strane na 20% */
     margin-top: 40px; /* Pomeranje slike malo više prema sredini */
     margin-bottom: 20px; /* Pomeranje slike malo niže */
   }

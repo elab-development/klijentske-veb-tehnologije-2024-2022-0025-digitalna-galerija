@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import './Login.css'; // Importovanje CSS fajla
 
 const Login: React.FC = () => {
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState(''); //useState hook za praćenje stanja unesenih vrednosti 
+                                                    //korisničkog imena i lozinke
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(''); //hook za praćenje eventualne greške pri unosu podataka
 
-    const handleLogin = () => {
+    const handleLogin = () => { //Ova funkcija se poziva kada korisnik pritisne dugme "Prijavi se"
+                                // Vrši validaciju unetih podataka korisničkog imena i lozinke, 
+                                //pri čemu se proverava da li su uneti korisničko ime i lozinka validni.
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (username.length <= 8) {
             setError('Korisničko ime mora biti duže od osam karaktera.');
@@ -24,6 +27,9 @@ const Login: React.FC = () => {
     return (
         <div className="container"> {/* Dodavanje CSS klase na div */}
             <h1>Login</h1>
+            {/*koristimo input elemente za unos korisničkog imena i lozinke;
+            value atribut je postavljen na vrednost stanja (username i password);
+            a onChange funkcija ažurira odgovarajuće stanje kada se unose nove vrednosti. */}
             <div className="form-group">
                 <label htmlFor="username">Korisničko ime:</label>
                 <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -34,7 +40,7 @@ const Login: React.FC = () => {
             </div>
             {error && <p className="error">{error}</p>} {/* Prikazivanje poruke o grešci ako postoji */}
             <div className="button-container"> {/* Dodajemo dodatni div oko dugmeta */}
-                <button onClick={handleLogin}>Prijavi se</button>
+                <button onClick={handleLogin}>Prijavi se</button> {/*klikom na dugme poziva se funkcija handleLogin*/}
             </div>
         </div>
     );
