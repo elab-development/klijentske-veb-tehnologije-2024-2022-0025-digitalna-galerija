@@ -1,3 +1,29 @@
+/* Definišite stilove za svetli mod */
+.light-mode {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
+}
+
+/* Definišite stilove za tamni mod */
+.dark-mode {
+  background-color: rgb(38, 31, 31);
+  color: white;
+  min-height: 100vh;
+}
+
+
+/* Stilizujte dugme za promenu moda */
+.dark-mode-button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-left: auto;
+  font-size: 16px;
+  width: 200px;
+}
 
 
 
@@ -14,6 +40,6 @@
 }
 
 .navbar-nav .nav-item .nav-link:hover{ /*kada se prolazi mišem preko linka*/
-  color: black; /*tekst crne boje*/
+  color: white; /*tekst bele boje*/
   background-color: #c14cc9; /*pozadinska boja linka*/
 }

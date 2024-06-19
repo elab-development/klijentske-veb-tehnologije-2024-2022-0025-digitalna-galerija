@@ -8,7 +8,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #C09FDE;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -53,5 +53,5 @@ button:hover {
 
 .error {
     color: red;
-    margin-top: 10px;
+    margin-top: 10px;
 }

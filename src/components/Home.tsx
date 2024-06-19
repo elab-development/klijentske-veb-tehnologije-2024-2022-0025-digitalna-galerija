@@ -1,5 +1,5 @@
 import React from 'react'; //omogućava kreiranje komponenti
-import homeImage from '../images/home.png'; // Uvoz slike
+import homeImage from '../images/home_transparent_strict.png'; // Uvoz slike
 import './Home.css';
 
 

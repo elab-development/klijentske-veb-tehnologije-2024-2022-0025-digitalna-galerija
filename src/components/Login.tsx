@@ -10,17 +10,17 @@ const Login: React.FC = () => {
     const handleLogin = () => { //Ova funkcija se poziva kada korisnik pritisne dugme "Prijavi se"
                                 // Vrši validaciju unetih podataka korisničkog imena i lozinke, 
                                 //pri čemu se proverava da li su uneti korisničko ime i lozinka validni.
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordPattern = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
         if (username.length <= 8) {
-            setError('Korisničko ime mora biti duže od osam karaktera.');
+            setError('Username must be longer than eight characters.');
         } else if (!password) {
-            setError('Molimo unesite lozinku.');
+            setError('Please enter a password.');
         } else if (!passwordPattern.test(password)) {
-            setError('Lozinka mora sadržati mala i velika slova, broj i specijalni znak.');
+            setError('The password must contain uppercase and lowercase letters, a number and a special character.');
         } else {
             // Ovde možete dodati logiku za proveru korisničkih podataka
-            console.log('Korisničko ime:', username);
-            console.log('Lozinka:', password);
+            console.log('Username:', username);
+            console.log('Password:', password);
         }
     };
 
@@ -31,16 +31,16 @@ const Login: React.FC = () => {
             value atribut je postavljen na vrednost stanja (username i password);
             a onChange funkcija ažurira odgovarajuće stanje kada se unose nove vrednosti. */}
             <div className="form-group">
-                <label htmlFor="username">Korisničko ime:</label>
+                <label htmlFor="username">Username:</label>
                 <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
             </div>
             <div className="form-group">
-                <label htmlFor="password">Lozinka:</label>
+                <label htmlFor="password">Password:</label>
                 <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             {error && <p className="error">{error}</p>} {/* Prikazivanje poruke o grešci ako postoji */}
             <div className="button-container"> {/* Dodajemo dodatni div oko dugmeta */}
-                <button onClick={handleLogin}>Prijavi se</button> {/*klikom na dugme poziva se funkcija handleLogin*/}
+                <button onClick={handleLogin}>Login</button> {/*klikom na dugme poziva se funkcija handleLogin*/}
             </div>
         </div>
     );
