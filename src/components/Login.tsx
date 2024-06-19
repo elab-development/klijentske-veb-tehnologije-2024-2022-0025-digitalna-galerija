@@ -1,46 +1,61 @@
 import React, { useState } from 'react';
-import './Login.css'; // Importovanje CSS fajla
+import './Login.css';
 
-const Login: React.FC = () => {
-    const [username, setUsername] = useState(''); //useState hook za praćenje stanja unesenih vrednosti 
-                                                    //korisničkog imena i lozinke
+// Custom hook za upravljanje stanjem forme
+const useFormState = () => {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); //hook za praćenje eventualne greške pri unosu podataka
+    const [error, setError] = useState('');
 
-    const handleLogin = () => { //Ova funkcija se poziva kada korisnik pritisne dugme "Prijavi se"
-                                // Vrši validaciju unetih podataka korisničkog imena i lozinke, 
-                                //pri čemu se proverava da li su uneti korisničko ime i lozinka validni.
-        const passwordPattern = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
-        if (username.length <= 8) {
-            setError('Username must be longer than eight characters.');
-        } else if (!password) {
-            setError('Please enter a password.');
-        } else if (!passwordPattern.test(password)) {
-            setError('The password must contain uppercase and lowercase letters, a number and a special character.');
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(e.target.value);
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(e.target.value);
+    };
+
+    const handleLogin = (users: { username: string; password: string }[]) => {
+        const user = users.find(user => user.username === username);
+
+        if (!user || user.password !== password) {
+            setError('Invalid username or password.');
         } else {
-            // Ovde možete dodati logiku za proveru korisničkih podataka
-            console.log('Username:', username);
-            console.log('Password:', password);
+            console.log('Logged in successfully as:', user.username);
+            // Redirekcija na profilnu stranicu
+            window.location.href = `/photographer/${user.username}`;
         }
     };
 
+    return { username, password, error, handleUsernameChange, handlePasswordChange, handleLogin };
+};
+
+const Login: React.FC = () => {
+    const { username, password, error, handleUsernameChange, handlePasswordChange, handleLogin } = useFormState();
+
+    const users = [
+        { username: 'Karolina%20Kaboompics', password: 'Password123*' },
+        { username: 'Diana%20✨', password: 'Password123*' },
+        { username: 'Steve%20Johnson', password: 'Password123*' },
+        { username: 'Diogo%20Miranda', password: 'Password123*' },
+        { username: 'Anni%20Roenkae', password: 'Password123*' },
+        { username: 'Nick%20Collins', password: 'Password123*' }
+    ];
+
     return (
-        <div className="container"> {/* Dodavanje CSS klase na div */}
+        <div className="container">
             <h1>Login</h1>
-            {/*koristimo input elemente za unos korisničkog imena i lozinke;
-            value atribut je postavljen na vrednost stanja (username i password);
-            a onChange funkcija ažurira odgovarajuće stanje kada se unose nove vrednosti. */}
             <div className="form-group">
                 <label htmlFor="username">Username:</label>
-                <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <input type="text" id="username" value={username} onChange={handleUsernameChange} />
             </div>
             <div className="form-group">
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" id="password" value={password} onChange={handlePasswordChange} />
             </div>
-            {error && <p className="error">{error}</p>} {/* Prikazivanje poruke o grešci ako postoji */}
-            <div className="button-container"> {/* Dodajemo dodatni div oko dugmeta */}
-                <button onClick={handleLogin}>Login</button> {/*klikom na dugme poziva se funkcija handleLogin*/}
+            {error && <p className="error">{error}</p>}
+            <div className="button-container">
+                <button onClick={() => handleLogin(users)}>Login</button>
             </div>
         </div>
     );
