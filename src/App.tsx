@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Gallery from "./components/Gallery";
 import AboutUs from "./components/AboutUs";
 import PhotographerPage from "./components/PhotographerPage";
+import './App.css';
 
 import { NavBarProps } from "./models/NavBarProps";
 

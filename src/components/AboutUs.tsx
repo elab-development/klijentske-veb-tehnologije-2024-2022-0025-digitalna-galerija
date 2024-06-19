@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './AboutUs.css'; // Uvoz CSS datoteke
-import johnDoeImg from '../images/slika4.png';
-import janeSmithImg from '../images/slika2.png';
-import alexJohnsonImg from '../images/slika3.png';
+import jana from '../images/ktehjana.jpg';
+import kristina from '../images/kethkristina.jpg';
+import ema from '../images/ktehema.jpg';
+
 
 
 
@@ -16,9 +17,9 @@ interface TeamMember {
 
 // niz objekata koji definiraj podatke o timu
 const team: TeamMember[] = [
-  { name: "John Doe", position: "Software Developer", department: "Engineering", image: johnDoeImg },
-  { name: "Jane Smith", position: "Marketing Manager", department: "Marketing", image: janeSmithImg },
-  { name: "Alex Johnson", position: "HR Specialist", department: "Human Resources", image: alexJohnsonImg },
+  { name: "Jana Ostojić", position: "Software Developer", department: "Engineering", image: jana },
+  { name: "Kristina Pantelić", position: "Marketing Manager", department: "Marketing", image: kristina },
+  { name: "Emilija Nikolić", position: "HR Specialist", department: "Human Resources", image: ema},
 
 ];
 
@@ -59,17 +60,10 @@ const AboutUs: React.FC = () => {
     }
   };
 
-  const [darkMode, setDarkMode] = useState(false); 
-  //koristi se useState hook za praćenje trenutnog moda (svetli ili tamni)
 
-
-  //funkcija menja vrednost darkMode između true i false, omogućavajući prelazak između svetlog i tamnog moda
-  const toggleDarkMode = () => { 
-    setDarkMode(!darkMode);
-  };
 
   return (
-    <div className={darkMode ? 'dark-mode' : 'light-mode'}>
+    
     <div>
       
       <div className="filters">
@@ -82,12 +76,8 @@ const AboutUs: React.FC = () => {
       {/* Prikaz članova tima */}
       <div className="team">{displayTeamMembers()}</div>
     </div>
-        <div className="dark">
-            <button onClick={toggleDarkMode}>Promeni u Dark Mode</button> 
-            {/*Klikom na dugme se poziva toggleDarkMode funkcija koja menja vrednost darkMode stanja.*/}
-        </div>
-    </div>
+        
   );
 };
 
-export default AboutUs;
+export default AboutUs;
