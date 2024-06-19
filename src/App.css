@@ -1,3 +1,24 @@
+/* App.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  font-weight: bold;
+  padding: 10px;
+  margin-top: auto;
+  text-align: center;
+}
+
+
 /* Definišite stilove za svetli mod */
 .light-mode {
   background-color: white;
@@ -37,9 +58,16 @@
 
 .navbar{
   background-color: #C09FDE; /*menjamo boju NavBara u istu boju kao i u projktu u figmi*/
+
+}
+
+.navbar-nav .nav-item .nav-link{ 
+  text-decoration: underline;
+
 }
 
 .navbar-nav .nav-item .nav-link:hover{ /*kada se prolazi mišem preko linka*/
   color: white; /*tekst bele boje*/
-  background-color: #c14cc9; /*pozadinska boja linka*/
+  background-color: #c14cc9; /*pozadinska boja linka*/
+
 }

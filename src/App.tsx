@@ -31,24 +31,29 @@ const App: React.FC = () => {
   return (
     
     <Router>
-      <NavBar {...navBarProps}/>   
-      {/*Ova linija renderuje NavBar komponentu, prosleđujući joj sve propertije iz 
-        navBarProps koristeći spread operator (...)
-        NavBar koristi ove propertije za prikazivanje navigacionih stavki i slike*/}
-      
-      <Routes> {/*definiše sve rute na sajtu*/}
-        {/*Svaki Route definiše putanju i odgovarajuću komponentu koja se renderuje kada se ta putanja poseti. 
-        Na primer, kada korisnik poseti /components/Login, renderuje se Login komponenta. */}
-        <Route path = "/" element = {<Home />} /> 
-        <Route path = "/components/Login" element = {<Login />} /> 
-        <Route path = "/components/Gallery" element = {<Gallery />} /> 
-        <Route path = "/components/AboutUs" element = {<AboutUs />} />
-        <Route path = "photographer/:name" element = {<PhotographerPage />} />
-      </Routes>
-
-    
+      <div id="root">
+        <NavBar {...navBarProps}/>   
+        {/*Ova linija renderuje NavBar komponentu, prosleđujući joj sve propertije iz 
+          navBarProps koristeći spread operator (...)
+          NavBar koristi ove propertije za prikazivanje navigacionih stavki i slike*/}
+        
+        <Routes> {/*definiše sve rute na sajtu*/}
+          {/*Svaki Route definiše putanju i odgovarajuću komponentu koja se renderuje kada se ta putanja poseti. 
+          Na primer, kada korisnik poseti /components/Login, renderuje se Login komponenta. */}
+          <Route path = "/" element = {<Home />} /> 
+          <Route path = "/components/Login" element = {<Login />} /> 
+          <Route path = "/components/Gallery" element = {<Gallery />} /> 
+          <Route path = "/components/AboutUs" element = {<AboutUs />} />
+          <Route path = "photographer/:name" element = {<PhotographerPage />} />
+        </Routes>
+        <footer className="footer">
+            &copy; All rights reserved. Pixel Museum ~
+        </footer>
+      </div>
     </Router>
+
+
   )
 }
 
-export default App
+export default App
