@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Gallery from "./components/Gallery";
 import AboutUs from "./components/AboutUs";
+import PhotographerPage from "./components/PhotographerPage";
 
 import { NavBarProps } from "./models/NavBarProps";
 
@@ -28,6 +29,7 @@ const App: React.FC = () => {
   
 
   return (
+    
     <Router>
       <NavBar {...navBarProps}/>   
       {/*Ova linija renderuje NavBar komponentu, prosleđujući joj sve propertije iz 
@@ -41,6 +43,7 @@ const App: React.FC = () => {
         <Route path = "/components/Login" element = {<Login />} /> 
         <Route path = "/components/Gallery" element = {<Gallery />} /> 
         <Route path = "/components/AboutUs" element = {<AboutUs />} />
+        <Route path = "photographer/:name" element = {<PhotographerPage />} />
       </Routes>
 
     
@@ -48,4 +51,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default App

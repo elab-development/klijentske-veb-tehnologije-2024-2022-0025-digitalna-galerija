@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './Gallery.css';
 import Pagination from '@mui/material/Pagination';
 import { MenuItem, Select, FormControl, InputLabel, SelectChangeEvent } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Gallery: React.FC = () => {
     const [images, setImages] = useState<any[]>([]);
     const [likedImages, setLikedImages] = useState<number[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedPhotographer, setSelectedPhotographer] = useState<string>('');
+    const navigate = useNavigate();
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setCurrentPage(value);
@@ -51,6 +53,10 @@ const Gallery: React.FC = () => {
         ? images.filter(image => image.photographer === selectedPhotographer)
         : images;
 
+    const handlePhotographerClick = (photographer: string) => {
+        navigate(`/photographer/${photographer}`);
+    };
+
     return (
         <div>
             <h1>Gallery</h1>
@@ -76,7 +82,9 @@ const Gallery: React.FC = () => {
                 {filteredImages.map((image, index) => (
                     <div key={index}>
                         <img src={image.src.medium} alt={image.photographer} />
-                        <p>{image.photographer}</p>
+                        <p onClick={() => handlePhotographerClick(image.photographer)} style={{ cursor: 'pointer', color: 'blue' }}>
+                            {image.photographer}
+                        </p>
                         <button onClick={() => handleLikeClick(image.id)}>
                             {likedImages.includes(image.id) ? 'Unlike' : 'Like'}
                         </button>
