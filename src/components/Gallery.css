@@ -1,4 +1,44 @@
-/* gallery.css */
+/* Gallery.css */
+.form-control {
+    width: 300px; 
+    margin-bottom: 20px;
+}
+
+.form-control .MuiSelect-root {
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+}
+
+.form-control .MuiInputLabel-root {
+    background-color: #fff;
+    padding: 5px;
+}
+
+/* Stilizacija MenuItem-a unutar Select komponente */
+.form-control .MuiMenu-paper {
+    background-color: #fff; /* Pozadina menija */
+    color: #333; /* Boja teksta */
+    border: 1px solid #ccc; /* Border menija */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Senka menija */
+}
+
+.form-control .MuiMenuItem-root {
+    font-size: 14px;
+    padding: 8px 16px;
+}
+
+.form-control .Mui-selected {
+    background-color: #007bff; /* Boja kada je stavka izabrana */
+    color: #fff;
+}
+
+.form-control .Mui-selected:hover {
+    background-color: #0056b3; /* Boja kada je stavka izabrana i na hover */
+}
+
 
 /*stilizovanje paginacije da ona  bude na sredini*/
 .pagination {
