@@ -36,6 +36,7 @@ html, body {
 
 /* Stilizujte dugme za promenu moda */
 .dark-mode-button {
+  text-decoration: underline;
   background-color: transparent;
   border: none;
   color: inherit;

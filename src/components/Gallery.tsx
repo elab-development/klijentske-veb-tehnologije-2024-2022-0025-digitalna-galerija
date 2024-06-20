@@ -18,7 +18,7 @@ const Gallery: React.FC = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await fetch('https://api.pexels.com/v1/search?query=artpiece&per_page=8&page=${currentPage}', {
+                const response = await fetch(`https://api.pexels.com/v1/search?query=artpiece&per_page=8&page=${currentPage}`, {
                     headers: {
                         Authorization: 'f8eLZrQGnyHWu6wQ1DS8CG6IUX9QG6DTm3tgfXjFAnHKmt9U8xkKuZYB'
                     }
