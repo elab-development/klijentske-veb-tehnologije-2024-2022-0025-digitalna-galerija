@@ -4,14 +4,22 @@ import Pagination from '@mui/material/Pagination';
 import { MenuItem, Select, FormControl, InputLabel, SelectChangeEvent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+interface Photo {
+    id: number;
+    photographer: string;
+    src: {
+        medium: string;
+    };
+}
+
 const Gallery: React.FC = () => {
-    const [images, setImages] = useState<any[]>([]);
+    const [images, setImages] = useState<Photo[]>([]);
     const [likedImages, setLikedImages] = useState<number[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedPhotographer, setSelectedPhotographer] = useState<string>('');
     const navigate = useNavigate();
 
-    const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const handlePageChange = (value: number) => {
         setCurrentPage(value);
     };
 
@@ -95,7 +103,7 @@ const Gallery: React.FC = () => {
                 <Pagination 
                     count={4} // Replace with the actual count of pages
                     page={currentPage}
-                    onChange={handlePageChange}
+                    onChange={(_, value) => handlePageChange(value)}
                 />
             </div>
         </div>
