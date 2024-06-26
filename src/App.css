@@ -1,4 +1,18 @@
 /* App.css */
+
+
+/* Stilovi za mobilne uređaje */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+}
+
 html, body {
   height: 100%;
   margin: 0;
