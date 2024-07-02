@@ -3,9 +3,7 @@ version: '3.8'
 services:
   react:
     container_name: myapp_react
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     environment:
       - ./env/react.env
     ports:
