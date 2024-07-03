@@ -1,5 +1,6 @@
 /// <reference types="vitest"/>
 /// <reference types="vite/client"/>
+/// <reference types="jest"/>
 
 
 import { defineConfig } from 'vite';

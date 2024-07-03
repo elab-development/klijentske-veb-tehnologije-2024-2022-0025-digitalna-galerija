@@ -4,9 +4,6 @@ import jana from '../images/ktehjana.jpg';
 import kristina from '../images/kethkristina.jpg';
 import ema from '../images/ktehema.jpg';
 
-
-
-
 // Definiraj interfejs za podatke o timu
 interface TeamMember {
   name: string;
@@ -20,7 +17,6 @@ const team: TeamMember[] = [
   { name: "Jana Ostojić", position: "Software Developer", department: "Engineering", image: jana },
   { name: "Kristina Pantelić", position: "Marketing Manager", department: "Marketing", image: kristina },
   { name: "Emilija Nikolić", position: "HR Specialist", department: "Human Resources", image: ema},
-
 ];
 
 const AboutUs: React.FC = () => {
@@ -60,24 +56,18 @@ const AboutUs: React.FC = () => {
     }
   };
 
-
-
   return (
-    
     <div>
-      
       <div className="filters">
         <button onClick={() => filterTeamByDepartment("Engineering")}>Engineering</button>
         <button onClick={() => filterTeamByDepartment("Marketing")}>Marketing</button>
         <button onClick={() => filterTeamByDepartment("Human Resources")}>Human Resources</button>
-        
       </div>
 
       {/* Prikaz članova tima */}
       <div className="team">{displayTeamMembers()}</div>
     </div>
-        
   );
 };
 
-export default AboutUs;
+export default AboutUs;
