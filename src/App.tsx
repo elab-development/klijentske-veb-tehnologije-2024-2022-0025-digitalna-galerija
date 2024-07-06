@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";  //za upravljanje rutama
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -11,50 +11,48 @@ import AboutUs from "./components/AboutUs";
 import PhotographerPage from "./components/PhotographerPage";
 import './App.css';
 
-import { NavBarProps } from "./models/NavBarProps";
+import { NavBarPropsI } from "./models/NavBarProps"; // Uvozimo NavBarPropsI iz models/NavBarProps.ts
 
-
-
-const navItems = [    // niz objekata navItems koji sadrži informacije o stavkama u navigacionom baru: 
-                      //ime stavke i putanja na koju vode
-  {name: "Home", path: '/'},
-  {name: "Login", path: '/components/Login'},
-  {name: "Gallery", path: '/components/Gallery'},
-  {name: "AboutUs", path: '/components/AboutUs'},
-]
-const  navBarProps = new NavBarProps(imagePath, navItems);  //instanca klase NavBarProps koja sadrži 
-                                                            //putanju do slike i navigacione stavke
-
+const navItems = [
+  { name: "Home", path: '/' },
+  { name: "Login", path: '/components/Login' },
+  { name: "Gallery", path: '/components/Gallery' },
+  { name: "AboutUs", path: '/components/AboutUs' },
+];
 
 const App: React.FC = () => {
-  
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
+  const navBarProps: NavBarPropsI = {
+    imageSrcPath: imagePath,
+    navItems: navItems,
+    handleMenuToggle: handleMenuToggle,
+    isMenuOpen: isMenuOpen,
+  };
 
   return (
-    
     <Router>
       <div id="root">
-        <NavBar {...navBarProps}/>   
-        {/*Ova linija renderuje NavBar komponentu, prosleđujući joj sve propertije iz 
-          navBarProps koristeći spread operator (...)
-          NavBar koristi ove propertije za prikazivanje navigacionih stavki i slike*/}
-        
-        <Routes> {/*definiše sve rute na sajtu*/}
-          {/*Svaki Route definiše putanju i odgovarajuću komponentu koja se renderuje kada se ta putanja poseti. 
-          Na primer, kada korisnik poseti /components/Login, renderuje se Login komponenta. */}
-          <Route path = "/" element = {<Home />} /> 
-          <Route path = "/components/Login" element = {<Login />} /> 
-          <Route path = "/components/Gallery" element = {<Gallery />} /> 
-          <Route path = "/components/AboutUs" element = {<AboutUs />} />
-          <Route path = "photographer/:name" element = {<PhotographerPage />} />
-        </Routes>
+        <NavBar {...navBarProps} /> {/* Prosleđujemo sve propertije iz navBarProps */}
+        <div className={`navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/components/Login" element={<Login />} />
+            <Route path="/components/Gallery" element={<Gallery />} />
+            <Route path="/components/AboutUs" element={<AboutUs />} />
+            <Route path="photographer/:name" element={<PhotographerPage />} />
+          </Routes>
+        </div>
         <footer className="footer">
-            &copy; All rights reserved. Pixel Museum ~
+          &copy; All rights reserved. Pixel Museum ~
         </footer>
       </div>
     </Router>
-
-
-  )
+  );
 }
 
-export default App
+export default App;

@@ -6,34 +6,30 @@ const PhotographerPage: React.FC = () => {
     const { name } = useParams<{ name: string }>();
     const [images, setImages] = useState<any[]>([]);
     const [filteredImages, setFilteredImages] = useState<any[]>([]);
+    const apiKey = '1015df66-245f-46fc-b32a-11d406911363'; // Stavite svoj API ključ ovde
 
     useEffect(() => {
-        console.log('Fetching images for query: artpiece');
+        console.log(`Fetching images for photographer: ${name}`);
         const fetchImages = async () => {
             try {
-                const response = await fetch('https://api.pexels.com/v1/search?query=artpiece&per_page=80', {
-                    headers: {
-                        Authorization: 'f8eLZrQGnyHWu6wQ1DS8CG6IUX9QG6DTm3tgfXjFAnHKmt9U8xkKuZYB'
-                    }
-                });
+                const response = await fetch(`https://api.harvardartmuseums.org/object?apikey=${apiKey}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch images');
                 }
                 const data = await response.json();
-                console.log('Fetched images:', data.photos);
-                setImages(data.photos);
+                console.log('Fetched images:', data.records);
+                setImages(data.records);
             } catch (error) {
                 console.error(error);
             }
         };
 
         fetchImages();
-    }, []);
+    }, [name, apiKey]);
 
     useEffect(() => {
         if (name && images.length > 0) {
-            const filtered = images.filter(image => image.photographer === name);
-            setFilteredImages(filtered.slice(0, 12)); // Prikaži samo prvih 12 slika
+            setFilteredImages(images.slice(0, 6)); // Prikaži samo prvih 12 slika
         }
     }, [name, images]);
 
@@ -43,8 +39,8 @@ const PhotographerPage: React.FC = () => {
             <div className="photographer-image-grid">
                 {filteredImages.map((image, index) => (
                     <div key={index} className="photographer-image-card">
-                        <img src={image.src.medium} alt={image.photographer} />
-                        
+                        <img src={image.primaryimageurl} alt={image.title} />
+                        <p>{image.title}</p>
                     </div>
                 ))}
             </div>

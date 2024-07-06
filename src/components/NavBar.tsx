@@ -1,10 +1,10 @@
-import {useState, useEffect} from "react";
-import "../App.css"
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import "../App.css";
+import { Link } from "react-router-dom";
 import { NavBarProps } from "../models/NavBarProps";
 
-export default function NavBar({imageSrcPath, navItems}: NavBarProps) {
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+// Custom hook za upravljanje dark mode stanjem
+function useDarkMode() {
     const [darkMode, setDarkMode] = useState(false);
 
     const toggleDarkMode = () => {
@@ -21,36 +21,43 @@ export default function NavBar({imageSrcPath, navItems}: NavBarProps) {
         }
     }, [darkMode]);
 
+    return [darkMode, toggleDarkMode];
+}
+
+export default function NavBar({ imageSrcPath, navItems }: NavBarProps) {
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [darkMode, toggleDarkMode] = useDarkMode(); // Korišćenje custom hook-a za dark mode
+
     return (
         <nav className="navbar navbar-expand-md shadow">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
-                    <img 
-                        src={imageSrcPath} 
-                        width="60" 
-                        height="60" 
-                        className="d-inline-block align-center" 
-                        alt=""/>
+                    <img
+                        src={imageSrcPath}
+                        width="60"
+                        height="60"
+                        className="d-inline-block align-center"
+                        alt="" />
                 </a>
 
-                <button className="navbar-toggler" 
-                    type="button" 
-                    data-toggle="collapse" 
-                    data-target="#navbarNav" 
-                    aria-controls="navbarNav" 
-                    aria-expanded="false" 
+                <button className="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-md-1">
-                        {navItems.map((items, index) => (
-                            <li key={items.path}
+                        {navItems.map((item, index) => (
+                            <li key={item.path}
                                 className="nav-item"
                                 onClick={() => setSelectedIndex(index)}>
-                                <Link className={selectedIndex === index ? "nav-link active fw-bold" : "nav-link"} to={items.path}>
-                                    {items.name}
+                                <Link className={selectedIndex === index ? "nav-link active fw-bold" : "nav-link"} to={item.path}>
+                                    {item.name}
                                 </Link>
                             </li>
                         ))}
@@ -61,5 +68,5 @@ export default function NavBar({imageSrcPath, navItems}: NavBarProps) {
                 </div>
             </div>
         </nav>
- );
+    );
 }
