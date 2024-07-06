@@ -16,55 +16,46 @@ interface TeamMember {
 const team: TeamMember[] = [
   { name: "Jana Ostojić", position: "Software Developer", department: "Engineering", image: jana },
   { name: "Kristina Pantelić", position: "Marketing Manager", department: "Marketing", image: kristina },
-  { name: "Emilija Nikolić", position: "HR Specialist", department: "Human Resources", image: ema},
+  { name: "Emilija Nikolić", position: "HR Specialist", department: "Human Resources", image: ema },
 ];
 
-const AboutUs: React.FC = () => {
-  const [filteredDepartment, setFilteredDepartment] = useState<string | null>(null); 
-  //Koristi se useState hook za praćenje trenutno odabranog departmana za filtriranje članova tima.
+interface AboutUsProps {
+  filterTeamByDepartment?: (department: string) => void;
+}
 
-  // Filtriraj članove tima prema odabranom departmanu
-  const filterTeamByDepartment = (department: string) => {
+const AboutUs: React.FC<AboutUsProps> = ({ filterTeamByDepartment }) => {
+  const [filteredDepartment, setFilteredDepartment] = useState<string | null>(null);
+
+  const handleFilterTeamByDepartment = (department: string) => {
     setFilteredDepartment(department);
+    if (filterTeamByDepartment) {
+      filterTeamByDepartment(department);
+    }
   };
 
   // Funkcija za prikaz članova tima - ako nije odabran nijedan departman, prikazuju se svi članovi tima
   const displayTeamMembers = () => {
-    if (filteredDepartment) {
-      const filteredTeam = team.filter(member => member.department === filteredDepartment);
-      return filteredTeam.map(member => (
-        <div key={member.name} className="team-member">
-          <img src={member.image} alt={member.name} />
-          <div>
-            <h3>{member.name}</h3>
-            <p>{member.position}</p>
-            <p>{member.department}</p>
-          </div>
+    const filteredTeam = filteredDepartment ? team.filter(member => member.department === filteredDepartment) : team;
+    return filteredTeam.map(member => (
+      <div key={member.name} className="team-member">
+        <img src={member.image} alt={member.name} />
+        <div>
+          <h3>{member.name}</h3>
+          <p>{member.position}</p>
+          <p>{member.department}</p>
         </div>
-      ));
-    } else {
-      return team.map(member => (
-        <div key={member.name} className="team-member">
-          <img src={member.image} alt={member.name} />
-          <div>
-            <h3>{member.name}</h3>
-            <p>{member.position}</p>
-            <p>{member.department}</p>
-          </div>
-        </div>
-      ));
-    }
+      </div>
+    ));
   };
 
   return (
     <div>
       <div className="filters">
-        <button onClick={() => filterTeamByDepartment("Engineering")}>Engineering</button>
-        <button onClick={() => filterTeamByDepartment("Marketing")}>Marketing</button>
-        <button onClick={() => filterTeamByDepartment("Human Resources")}>Human Resources</button>
+        <button onClick={() => handleFilterTeamByDepartment("Engineering")}>Engineering</button>
+        <button onClick={() => handleFilterTeamByDepartment("Marketing")}>Marketing</button>
+        <button onClick={() => handleFilterTeamByDepartment("Human Resources")}>Human Resources</button>
       </div>
 
-      {/* Prikaz članova tima */}
       <div className="team">{displayTeamMembers()}</div>
     </div>
   );
