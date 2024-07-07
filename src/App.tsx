@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.css";
@@ -11,31 +11,39 @@ import AboutUs from "./components/AboutUs";
 import PhotographerPage from "./components/PhotographerPage";
 import './App.css';
 
-import { NavBarPropsI } from "./models/NavBarProps"; // Uvozimo NavBarPropsI iz models/NavBarProps.ts
-
-const navItems = [
-  { name: "Home", path: '/' },
-  { name: "Login", path: '/components/Login' },
-  { name: "Gallery", path: '/components/Gallery' },
-  { name: "AboutUs", path: '/components/AboutUs' },
-];
+import { NavBarPropsI } from "./models/NavBarProps";
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
+
+  const handleLoginSuccess = (username: string) => {
+    setIsLoggedIn(true);
+    setLoggedInUser(username);
+  };
+
+  const navItems = [
+    { name: "Home", path: '/' },
+    { name: isLoggedIn ? "Profile" : "Login", path: isLoggedIn ? `/photographer/${loggedInUser}` : '/components/Login' },
+    { name: "Gallery", path: '/components/Gallery' },
+    { name: "AboutUs", path: '/components/AboutUs' },
+  ];
+
   const navBarProps: NavBarPropsI = {
     imageSrcPath: imagePath,
     navItems: navItems,
-    handleMenuToggle: () => {}, // Prazna funkcija jer više nije potrebna
-    isMenuOpen: false // Više nije potrebna varijabla za stanje
+    handleMenuToggle: () => {},
+    isMenuOpen: false
   };
 
   return (
     <Router>
       <div id="root">
-        <NavBar {...navBarProps} /> {/* Prosleđujemo sve propertije iz navBarProps */}
+        <NavBar {...navBarProps} />
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/components/Login" element={<Login />} />
+            <Route path="/components/Login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
             <Route path="/components/Gallery" element={<Gallery />} />
             <Route path="/components/AboutUs" element={<AboutUs />} />
             <Route path="photographer/:name" element={<PhotographerPage />} />

@@ -8,5 +8,6 @@ export interface User {
   // Interface for LoginManager props
   export interface LoginManagerProps {
     users: User[];
+    onLoginSuccess: (username: string) => void;  
   }
   
