@@ -1,35 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "../App.css";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavBarProps } from "../models/NavBarProps";
+import { NavBarPropsI } from "../models/NavBarProps";
+import "../App.css";
 
-// Custom hook za upravljanje dark mode stanjem
-function useDarkMode() {
-    const [darkMode, setDarkMode] = useState(false);
+function NavBar({ imageSrcPath, navItems }: NavBarPropsI) {
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [isMenuOpen, setMenuOpen] = useState(false);
 
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode);
+    const handleMenuToggle = () => {
+        setMenuOpen(!isMenuOpen);
     };
 
-    useEffect(() => {
-        if (darkMode) {
-            document.body.classList.add('dark-mode');
-            document.body.classList.remove('light-mode');
-        } else {
-            document.body.classList.add('light-mode');
-            document.body.classList.remove('dark-mode');
-        }
-    }, [darkMode]);
-
-    return [darkMode, toggleDarkMode];
-}
-
-export default function NavBar({ imageSrcPath, navItems }: NavBarProps) {
-    const [selectedIndex, setSelectedIndex] = useState(-1);
-    const [darkMode, toggleDarkMode] = useDarkMode(); // Korišćenje custom hook-a za dark mode
-
     return (
-        <nav className="navbar navbar-expand-md shadow">
+        <nav className="navbar navbar-expand-md navbar-purple shadow">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <img
@@ -37,36 +20,47 @@ export default function NavBar({ imageSrcPath, navItems }: NavBarProps) {
                         width="60"
                         height="60"
                         className="d-inline-block align-center"
-                        alt="" />
+                        alt="Logo"
+                    />
                 </a>
 
-                <button className="navbar-toggler"
+                <button
+                    className="navbar-toggler"
                     type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    onClick={handleMenuToggle}
+                >
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div
+                    className={`collapse navbar-collapse ${
+                        isMenuOpen ? "show" : ""
+                    }`}
+                >
                     <ul className="navbar-nav me-auto mb-2 mb-md-1">
                         {navItems.map((item, index) => (
-                            <li key={item.path}
+                            <li
+                                key={item.path}
                                 className="nav-item"
-                                onClick={() => setSelectedIndex(index)}>
-                                <Link className={selectedIndex === index ? "nav-link active fw-bold" : "nav-link"} to={item.path}>
+                                onClick={() => setSelectedIndex(index)}
+                            >
+                                <Link
+                                    className={`nav-link ${
+                                        selectedIndex === index
+                                            ? "active fw-bold"
+                                            : ""
+                                    }`}
+                                    to={item.path}
+                                >
                                     {item.name}
                                 </Link>
                             </li>
                         ))}
                     </ul>
-                    <button className="dark-mode-button" onClick={toggleDarkMode}>
-                        {darkMode ? "Change to Light Mode" : "Change to Dark Mode"}
-                    </button>
                 </div>
             </div>
         </nav>
     );
 }
+
+export default NavBar;

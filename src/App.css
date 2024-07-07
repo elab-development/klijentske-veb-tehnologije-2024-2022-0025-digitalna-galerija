@@ -1,6 +1,5 @@
 /* App.css */
 
-
 /* Stilovi za mobilne uređaje */
 @media (max-width: 768px) {
   .navbar-brand img {
@@ -10,6 +9,45 @@
 
   .nav-link {
     font-size: 14px;
+  }
+
+  .outer {
+    padding: 20px;
+  }
+
+  .inner {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Stilovi za tablete */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-brand img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+
+  .inner {
+    width: 80%;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
 
@@ -32,7 +70,6 @@ html, body {
   text-align: center;
 }
 
-
 /* Definišite stilove za svetli mod */
 .light-mode {
   background-color: white;
@@ -47,7 +84,6 @@ html, body {
   min-height: 100vh;
 }
 
-
 /* Stilizujte dugme za promenu moda */
 .dark-mode-button {
   text-decoration: underline;
@@ -61,28 +97,47 @@ html, body {
   width: 200px;
 }
 
-
-
-.App{
-  text-align: center; /*Centrira tekst unutar App komponente*/
-  min-height: 100vh; /* Postavljamo minimalnu visinu na 100% visine vidljivog dela prozora*/
+.App {
+  text-align: center;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-
-.navbar{
-  background-color: #C09FDE; /*menjamo boju NavBara u istu boju kao i u projktu u figmi*/
-
+.navbar {
+  background-color: #C09FDE;
 }
 
-.navbar-nav .nav-item .nav-link{ 
+.navbar-nav .nav-item .nav-link {
   text-decoration: underline;
-
 }
 
-.navbar-nav .nav-item .nav-link:hover{ /*kada se prolazi mišem preko linka*/
-  color: white; /*tekst bele boje*/
-  background-color: #c14cc9; /*pozadinska boja linka*/
+.navbar-nav .nav-item .nav-link:hover {
+  color: white;
+  background-color: #c14cc9;
+}
 
+/* Additional global styles */
+.outer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgb(34 35 58 / 20%);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+.navbar-purple {
+  background-color: #C09FDE; /* Ljubičasta boja koju ste koristili */
+}
+
+.navbar {
+  background-color: #C09FDE; /* Ljubičasta boja koju ste koristili */
 }

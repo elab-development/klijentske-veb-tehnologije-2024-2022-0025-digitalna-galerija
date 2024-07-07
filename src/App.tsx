@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import imagePath from './assets/graphics.png'
+import imagePath from './assets/graphics.png';
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Gallery from "./components/Gallery";
@@ -21,24 +21,18 @@ const navItems = [
 ];
 
 const App: React.FC = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuOpen(!isMenuOpen);
-  };
-
   const navBarProps: NavBarPropsI = {
     imageSrcPath: imagePath,
     navItems: navItems,
-    handleMenuToggle: handleMenuToggle,
-    isMenuOpen: isMenuOpen,
+    handleMenuToggle: () => {}, // Prazna funkcija jer više nije potrebna
+    isMenuOpen: false // Više nije potrebna varijabla za stanje
   };
 
   return (
     <Router>
       <div id="root">
         <NavBar {...navBarProps} /> {/* Prosleđujemo sve propertije iz navBarProps */}
-        <div className={`navbar-collapse ${isMenuOpen ? 'show' : ''}`}>
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/components/Login" element={<Login />} />

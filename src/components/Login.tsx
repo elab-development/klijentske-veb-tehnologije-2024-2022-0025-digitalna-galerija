@@ -15,7 +15,11 @@ const Login: React.FC = () => {
         { username: 'Nick%20Collins', password: 'Password123*' }
     ];
 
-    return <LoginManager users={users} />;
+    return (
+        <div className="login-container"> {/* Dodajte novu klasu ili prilagodite postojeću */}
+            <LoginManager users={users} />
+        </div>
+    );
 };
 
 export default Login;
