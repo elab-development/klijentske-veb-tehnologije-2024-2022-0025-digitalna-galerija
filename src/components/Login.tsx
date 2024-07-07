@@ -1,5 +1,3 @@
-// Login.tsx
-
 import React from 'react';
 import './Login.css';
 import LoginManager from './LoginManager';
@@ -16,9 +14,11 @@ const Login: React.FC = () => {
     ];
 
     return (
-        <div className="login-container"> {/* Dodajte novu klasu ili prilagodite postojeću */}
-            <LoginManager users={users} />
-        </div>
+        
+            <div className="container">
+                <LoginManager users={users} />
+            </div>
+        
     );
 };
 

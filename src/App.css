@@ -1,5 +1,3 @@
-/* App.css */
-
 /* Stilovi za mobilne uređaje */
 @media (max-width: 768px) {
   .navbar-brand img {
@@ -70,21 +68,20 @@ html, body {
   text-align: center;
 }
 
-/* Definišite stilove za svetli mod */
 .light-mode {
   background-color: white;
   color: black;
   min-height: 100vh;
 }
 
-/* Definišite stilove za tamni mod */
+
 .dark-mode {
   background-color: rgb(38, 31, 31);
   color: white;
   min-height: 100vh;
 }
 
-/* Stilizujte dugme za promenu moda */
+/* dugme za promenu moda */
 .dark-mode-button {
   text-decoration: underline;
   background-color: transparent;
@@ -117,7 +114,6 @@ html, body {
   background-color: #c14cc9;
 }
 
-/* Additional global styles */
 .outer {
   display: flex;
   justify-content: center;
@@ -135,9 +131,9 @@ html, body {
   transition: all 0.3s;
 }
 .navbar-purple {
-  background-color: #C09FDE; /* Ljubičasta boja koju ste koristili */
+  background-color: #C09FDE; 
 }
 
 .navbar {
-  background-color: #C09FDE; /* Ljubičasta boja koju ste koristili */
+  background-color: #C09FDE; 
 }
