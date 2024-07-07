@@ -1,4 +1,4 @@
-/* Gallery.css */
+
 .form-control {
     width: 300px; 
     margin-bottom: 20px;
@@ -17,12 +17,12 @@
     padding: 5px;
 }
 
-/* Stilizacija MenuItem-a unutar Select komponente */
+
 .form-control .MuiMenu-paper {
-    background-color: #fff; /* Pozadina menija */
-    color: #333; /* Boja teksta */
-    border: 1px solid #ccc; /* Border menija */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Senka menija */
+    background-color: #fff; 
+    color: #333; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
 .form-control .MuiMenuItem-root {
@@ -31,16 +31,16 @@
 }
 
 .form-control .Mui-selected {
-    background-color: #007bff; /* Boja kada je stavka izabrana */
+    background-color: #007bff; 
     color: #fff;
 }
 
 .form-control .Mui-selected:hover {
-    background-color: #0056b3; /* Boja kada je stavka izabrana i na hover */
+    background-color: #0056b3; 
 }
 
 
-/*stilizovanje paginacije da ona  bude na sredini*/
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -48,16 +48,16 @@
 }
 
 .image-grid {
-    text-align: center; /* Postavljamo tekstualni sadržaj na sredinu */
-    display: flex; /* Koristimo fleksibilni kontejner */
-    align-items: center; /* Postavljamo elemente u sredinu horizontalno */
-    justify-content: center; /* Postavljamo elemente u sredinu vertikalno */
+    text-align: center; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
 }
 
-/* Dodajemo stilizaciju za button element */
+
 .image-grid button {
     background-color: rgb(28, 28, 151);
-    color: white; /* Beli tekst */
+    color: white; 
     border: none;
     padding: 10px 20px;
     width: 100px;
@@ -67,13 +67,13 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Dodajemo glatki prelaz između boja */
+    transition: background-color 0.3s ease; 
     align-items: center;
 }
 
-/* Dodajemo hover efekat za dugme */
+
 .image-grid button:hover {
-    background-color: #e92eae; /* pink boja prilikom hover-a */
+    background-color: #e92eae; 
 }
 
 .image-grid {

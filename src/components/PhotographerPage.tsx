@@ -6,7 +6,7 @@ const PhotographerPage: React.FC = () => {
     const { name } = useParams<{ name: string }>();
     const [images, setImages] = useState<any[]>([]);
     const [filteredImages, setFilteredImages] = useState<any[]>([]);
-    const apiKey = '1015df66-245f-46fc-b32a-11d406911363'; // Stavite svoj API ključ ovde
+    const apiKey = '1015df66-245f-46fc-b32a-11d406911363'; 
 
     useEffect(() => {
         console.log(`Fetching images for photographer: ${name}`);
@@ -29,7 +29,7 @@ const PhotographerPage: React.FC = () => {
 
     useEffect(() => {
         if (name && images.length > 0) {
-            setFilteredImages(images.slice(0, 6)); // Prikaži samo prvih 12 slika
+            setFilteredImages(images.slice(0, 6)); 
         }
     }, [name, images]);
 

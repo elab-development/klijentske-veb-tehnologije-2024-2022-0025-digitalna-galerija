@@ -3,12 +3,12 @@ import { render, fireEvent } from '@testing-library/react';
 import AboutUs from '../components/AboutUs';
 import { vi } from 'vitest';
 
-// Mock funkcija za filterTeamByDepartment
+
 const mockFilterTeamByDepartment = vi.fn();
 
 describe('AboutUs component', () => {
   afterEach(() => {
-    vi.clearAllMocks(); // Resetujemo sve mock-ove posle svakog testa
+    vi.clearAllMocks(); 
   });
 
   test('Prikazuje sve članove tima na početku', () => {
@@ -23,7 +23,7 @@ describe('AboutUs component', () => {
   test('Filtrira članove tima po departmanu kada se klikne na dugme', () => {
     const { getAllByText } = render(<AboutUs filterTeamByDepartment={mockFilterTeamByDepartment} />);
     
-    // Klik na prvi dugme za filtriranje po Marketingu
+    // Klik na prvo dugme za filtriranje po Marketingu
     const marketingButtons = getAllByText('Marketing');
     fireEvent.click(marketingButtons[0]);
     

@@ -1,5 +1,5 @@
 .button-container {
-    margin-top: 20px; /* Dodajemo marginu iznad dugmeta */
+    margin-top: 20px; 
 }
 
 .container {
@@ -13,8 +13,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1; /* Povećajte z-index da bi bio iznad padajućeg menija ako je potrebno */
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    z-index: 1; 
+    box-sizing: border-box; 
 }
 
 h1 {
@@ -37,7 +37,7 @@ input[type="password"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    box-sizing: border-box; 
 }
 
 button {
@@ -56,12 +56,10 @@ button:hover {
 
 .error {
     color: red;
-    margin-top: 10px; /* Ispraviti razmak između greške i ostalih elemenata */
+    margin-top: 10px; 
 }
 
-/*.container {
-    z-index: 10; /* Visok z-index da bi bio iznad padajućeg menija 
-}*/
+
 
 @media (max-width: 768px) {
     .container {
@@ -71,6 +69,6 @@ button:hover {
         top: auto;
         left: auto;
         transform: none;
-        margin-top: 20px; /* Adds space at the top for smaller screens */
+        margin-top: 20px; 
 }
 }

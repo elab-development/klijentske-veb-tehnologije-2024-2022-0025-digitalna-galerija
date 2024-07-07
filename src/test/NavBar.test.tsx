@@ -1,6 +1,6 @@
-import NavBar from "../components/NavBar"; // Prilagodite putanju u zavisnosti od strukture vašeg projekta
+import NavBar from "../components/NavBar"; 
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom"; // Potrebno za Link komponentu
+import { BrowserRouter } from "react-router-dom"; 
 
 test("If NavBar is showing Gallery", () => {
     render(

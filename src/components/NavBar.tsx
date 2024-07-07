@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavBarPropsI } from "../models/NavBarProps";
 import "../App.css";
 
+
 function NavBar({ imageSrcPath, navItems }: NavBarPropsI) {
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
+
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+        } else {
+            document.body.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+        }
+    }, [darkMode]);
 
     const handleMenuToggle = () => {
         setMenuOpen(!isMenuOpen);
@@ -57,6 +73,9 @@ function NavBar({ imageSrcPath, navItems }: NavBarPropsI) {
                             </li>
                         ))}
                     </ul>
+                    <button className="dark-mode-button" onClick={toggleDarkMode}>
+                        {darkMode ? "Change to Light Mode" : "Change to Dark Mode"}
+                    </button>
                 </div>
             </div>
         </nav>

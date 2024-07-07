@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import './AboutUs.css'; // Uvoz CSS datoteke
+import './AboutUs.css'; 
 import jana from '../images/ktehjana.jpg';
 import kristina from '../images/kethkristina.jpg';
 import ema from '../images/ktehema.jpg';
 
-// Definiraj interfejs za podatke o timu
+
 interface TeamMember {
   name: string;
   position: string;
   department: string; 
-  image: string; // Dodali smo polje za sliku
+  image: string; 
 }
 
-// niz objekata koji definiraj podatke o timu
+
 const team: TeamMember[] = [
   { name: "Jana Ostojić", position: "Software Developer", department: "Engineering", image: jana },
   { name: "Kristina Pantelić", position: "Marketing Manager", department: "Marketing", image: kristina },
@@ -33,7 +33,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ filterTeamByDepartment }) => {
     }
   };
 
-  // Funkcija za prikaz članova tima - ako nije odabran nijedan departman, prikazuju se svi članovi tima
+
   const displayTeamMembers = () => {
     const filteredTeam = filteredDepartment ? team.filter(member => member.department === filteredDepartment) : team;
     return filteredTeam.map(member => (

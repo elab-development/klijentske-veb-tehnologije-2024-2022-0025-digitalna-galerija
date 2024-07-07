@@ -101,7 +101,7 @@ const Gallery: React.FC = () => {
             </div>
             <div className="pagination">
                 <Pagination 
-                    count={4} // Replace with the actual count of pages
+                    count={4} 
                     page={currentPage}
                     onChange={(_, value) => handlePageChange(value)}
                 />
