@@ -1,5 +1,4 @@
-version: '3.8'
-
+name: "myapp_react"
 services:
   react:
     container_name: myapp_react
